@@ -14,7 +14,8 @@
     "react-router-dom": "^6.26.0",
     "gsap": "^3.12.5",
     "framer-motion": "^11.3.19",
-    "hls.js": "^1.5.15"
+    "hls.js": "^1.5.15",
+    "lucide-react": "^0.383.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

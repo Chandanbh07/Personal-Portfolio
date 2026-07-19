@@ -9,6 +9,7 @@ const HLS_SRC =
 const NAV_LINKS = [
   { label: "About", href: "#about" },
   { label: "Work", href: "#work" },
+  { label: "Experience", href: "#experience" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -117,9 +118,7 @@ export default function Hero() {
 
       {/* Hero content */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
-        <span className="blur-in text-xs text-muted uppercase tracking-[0.3em] mb-8">
-          Open to Off-Campus Opportunities
-        </span>
+        
         <h1 className="name-reveal text-5xl md:text-7xl lg:text-8xl font-display italic leading-[0.95] tracking-tight text-text-primary mb-6">
           {profile.name}
         </h1>

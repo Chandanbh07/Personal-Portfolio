@@ -12,7 +12,7 @@ const fadeUp = {
 
 export default function Certifications() {
   return (
-    <section id="certifications" className="bg-bg py-16 md:py-24">
+    <section id="certifications" className="bg-bg py-16 md:py-24 scroll-mt-24">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
         <motion.div
           initial="hidden"

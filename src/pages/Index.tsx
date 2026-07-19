@@ -5,6 +5,7 @@ import Experience from "../components/Experience";
 import Projects from "../components/Projects";
 import Certifications from "../components/Certifications";
 import Contact from "../components/Contact";
+import Footer from "../components/Footer";
 
 export default function Index() {
   return (
@@ -16,6 +17,7 @@ export default function Index() {
       <Projects />
       <Certifications />
       <Contact />
+      <Footer />
     </main>
   );
 }

@@ -3,7 +3,7 @@ import { experience } from "../data";
 
 export default function Experience() {
   return (
-    <section id="experience" className="bg-bg py-16 md:py-24">
+    <section id="experience" className="bg-bg py-16 md:py-24 scroll-mt-24">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
