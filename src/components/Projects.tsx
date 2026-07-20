@@ -6,7 +6,11 @@ const fadeUp = {
   show: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, delay: i * 0.08, ease: [0.25, 0.1, 0.25, 1] as const },
+    transition: {
+      duration: 0.8,
+      delay: i * 0.08,
+      ease: [0.25, 0.1, 0.25, 1] as const,
+    },
   }),
 };
 
@@ -24,41 +28,33 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       custom={index}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      whileHover={{
+        y: -8,
+        scale: 1.015,
+        boxShadow: "0 20px 50px rgba(0,0,0,0.35)",
+        transition: {
+          duration: 0.25,
+          ease: "easeOut",
+        },
+      }}
+      viewport={{ once: true }}
       variants={fadeUp}
-      className="rounded-3xl border border-stroke bg-surface overflow-hidden"
+      className="rounded-3xl border border-stroke bg-surface overflow-hidden h-full flex flex-col"
     >
-      {/* Screenshot placeholder — swap the div below for your project's <img> */}
-      <div className="relative aspect-[16/10] bg-bg border-b border-stroke overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.15]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle, #fff 1px, transparent 1px)",
-            backgroundSize: "18px 18px",
-          }}
-        />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-          >
-            <rect x="3" y="4" width="18" height="14" rx="2" />
-            <path d="M3 9h18" />
-            <circle cx="6.5" cy="6.5" r="0.5" fill="currentColor" />
-            <circle cx="9" cy="6.5" r="0.5" fill="currentColor" />
-          </svg>
-          <span className="text-xs uppercase tracking-[0.2em]">
-            Add screenshot
-          </span>
+      {/* Screenshot */}
+      {project.image && (
+        <div className="relative h-72 overflow-hidden border-b border-stroke group">
+          <img
+            src={project.image}
+            alt={project.title}
+            loading="lazy"
+            className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
-      </div>
+      )}
 
-      <div className="p-6 md:p-7">
+      <div className="p-6 md:p-7 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-3">
           <span
             className="w-1.5 h-1.5 rounded-full"
@@ -91,7 +87,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           ))}
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="mt-auto flex items-center gap-5">
           {project.liveDemo && (
             <a
               href={project.liveDemo}
@@ -102,6 +98,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               Live demo <span aria-hidden>↗</span>
             </a>
           )}
+
           <a
             href={project.github}
             target="_blank"
@@ -120,9 +117,13 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 }
 
 export default function Projects() {
+  const featuredProjects = projects.filter((project) => project.image);
+  const otherProjects = projects.filter((project) => !project.image);
+
   return (
     <section id="work" className="bg-bg py-16 md:py-24 scroll-mt-24">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
         <motion.div
           initial="hidden"
           whileInView="show"
@@ -137,20 +138,42 @@ export default function Projects() {
               Selected Work
             </span>
           </div>
+
           <h2 className="text-4xl md:text-5xl font-body font-medium tracking-tight text-text-primary mb-3">
             Featured <span className="font-display italic">projects</span>
           </h2>
+
           <p className="text-sm md:text-base text-muted max-w-md">
-            A selection of things I've built, from ML experiments to
-            full-stack products.
+            A selection of things I've built, from ML experiments to full-stack
+            products.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
-          ))}
-        </div>
+        {/* Featured Projects (with images) */}
+        {featuredProjects.length > 0 && (
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 mb-10">
+            {featuredProjects.map((project, index) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* Other Projects (without images) */}
+        {otherProjects.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {otherProjects.map((project, index) => (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                index={featuredProjects.length + index}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

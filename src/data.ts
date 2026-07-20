@@ -13,73 +13,106 @@ export const profile = {
 
 export const about = {
   eyebrow: "About Me",
-  heading: "Passionate about building great things",
+  heading: "Building modern web & blockchain applications",
   paragraphs: [
-    "Hi, I'm Chandanagouda — a passionate Full Stack Developer based in India. I enjoy building modern, responsive, and scalable web applications that deliver seamless user experiences.",
-    "My primary tech stack includes React, Next.js, TypeScript, Node.js, Express.js, and MongoDB. I focus on writing clean, maintainable code while emphasizing performance, accessibility, and intuitive UI design.",
-    "I'm constantly learning new technologies, exploring modern development practices, and building projects that strengthen my skills. I'm currently seeking opportunities where I can contribute, grow as a software engineer, and solve real-world problems through technology.",
+    "Hi, I'm Chandanagouda, a passionate Full Stack Developer from India with a strong interest in building scalable web applications, blockchain products, and modern user experiences.",
+    "I primarily work with React, TypeScript, Node.js, Express.js, PostgreSQL, Prisma, MongoDB, and Tailwind CSS. I enjoy designing clean architectures, developing REST APIs, and creating responsive interfaces that prioritize performance and usability.",
+    "I'm constantly exploring emerging technologies such as Web3, AI, and cloud computing through hands-on projects. I'm currently seeking Software Engineer opportunities where I can contribute, learn, and solve real-world engineering challenges.",
   ],
   stats: [
     { value: "10+", label: "Projects Built" },
-    { value: "200+", label: "GitHub Commits" },
-    { value: "15+", label: "Technologies Learned" },
-    { value: "100%", label: "Passion for Learning" },
+    { value: "500+", label: "GitHub Commits" },
+    { value: "20+", label: "Technologies Used" },
+    { value: "1", label: "Research Publication" },
   ],
 };
 
 export const skillGroups = [
   {
     label: "Languages",
-    items: ["C/C++", "Java", "Python"],
-  },
-  {
-    label: "Frontend",
-    items: ["HTML", "CSS", "JavaScript", "React", "React Native"],
-  },
-  {
-    label: "Backend & Data",
-    items: ["Node.js", "Express", "MongoDB", "SQL"],
-  },
-  {
-    label: "ML & Cloud",
     items: [
-      "Machine Learning",
-      "Deep Learning",
-      "NLP",
-      "Computer Vision",
-      "AWS / Cloud",
+      "C++",
+      "Java",
+      "Python",
+      "JavaScript",
+      "TypeScript"
     ],
   },
   {
-    label: "Core CS",
+    label: "Frontend",
     items: [
-      "DSA",
-      "OOP",
-      "DBMS",
-      "Operating Systems",
-      "Computer Networks",
-      "SDLC",
+      "React",
+      "Next.js",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+      "React Native"
+    ],
+  },
+  {
+    label: "Backend",
+    items: [
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "WebSockets"
+    ],
+  },
+  {
+    label: "Databases",
+    items: [
+      "PostgreSQL",
+      "MongoDB",
+      "Prisma",
+      "Supabase",
+      "SQL"
+    ],
+  },
+  {
+    label: "Blockchain",
+    items: [
+      "Ethereum",
+      "Solidity",
+      "Hardhat",
+      "Web3"
     ],
   },
   {
     label: "Tools",
-    items: ["Git", "Postman", "VS Code", "Figma", "Expo"],
+    items: [
+      "Git",
+      "GitHub",
+      "Docker",
+      "Postman",
+      "Vercel",
+      "VS Code"
+    ],
   },
 ];
 
 export const experience = {
-  title: "Full-Stack & ML Development — Academic Projects",
-  org: "KLE Technological University",
-  location: "Hubli, India",
-  period: "Nov 2022 — Present",
+  title: "Full Stack Developer",
+  org: "Academic & Personal Projects",
+  location: "India",
+  period: "2022 — Present",
   description:
-    "Developed academic and self-driven projects spanning full-stack web development, mobile applications, and machine learning, while following SDLC principles and Agile-style workflows in team-based settings.",
+    "Designed and developed production-style web applications ranging from MERN platforms to blockchain-powered prediction markets, while applying software engineering best practices throughout the development lifecycle.",
   points: [
-    "Built and shipped full-stack, mobile, and ML projects end to end — from planning through deployment.",
-    "Collaborated in team-based projects following SDLC principles and Agile-style workflows.",
-    "Used Git for version control, debugging, and iterative feature development across multiple project cycles.",
+    "Built responsive full-stack applications using React, TypeScript, Node.js, Express.js, PostgreSQL, MongoDB, and Prisma.",
+    "Developed a decentralized prediction market platform with authentication, real-time market updates, and blockchain integration.",
+    "Designed REST APIs, database schemas, authentication systems, and reusable UI components.",
+    "Used Git, GitHub, Docker, and Vercel for version control, deployment, and collaboration.",
   ],
-  stack: ["React", "Node.js", "Express", "MongoDB", "Python", "Git"],
+  stack: [
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Express",
+    "PostgreSQL",
+    "Prisma",
+    "MongoDB",
+    "Docker",
+  ],
 };
 
 export interface Project {
@@ -90,35 +123,80 @@ export interface Project {
   stack: string[];
   github: string;
   liveDemo?: string;
+  image?: string;
 }
 
 export const projects: Project[] = [
   {
-    title: "Sentiment Analysis of Indian Political Tweets",
-    category: "Machine Learning",
-    accent: "green",
-    description:
-      "An NLP pipeline that classifies political sentiment in tweets, comparing TF-IDF with LSTM and RNN models to find the most reliable approach — reaching 83% accuracy.",
-    stack: ["Python", "NLP", "LSTM", "RNN", "TF-IDF"],
-    github: "https://github.com/Chandanbh07/Sentiment-Analysis-of-Indian-IPT-main",
-  },
-  {
-    title: "Cine Stream",
-    category: "Mobile",
+    title: "PolyCast",
+    category: "Blockchain • Full Stack",
     accent: "violet",
     description:
-      "A cross-platform mobile movie-streaming app with modular UI components, smooth navigation, and a responsive layout tuned for both Android and iOS.",
-    stack: ["React Native", "Expo", "JavaScript"],
-    github: "https://github.com/Chandanbh07/Cinestream",
+      "A decentralized prediction market platform inspired by Polymarket where users can trade YES/NO outcomes on real-world events. Built with React, Node.js, PostgreSQL, Prisma, Supabase authentication, WebSockets, and blockchain integration for live market updates.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "Supabase",
+      "WebSockets",
+      "Blockchain",
+      "Tailwind CSS"
+    ],
+    github: "https://github.com/Chandanbh07/PolyCast",
+    liveDemo: "https://poly-cast-frontend.vercel.app/",
+    image: "/polycast.png",
   },
+
   {
     title: "Learning Management System",
     category: "Full Stack",
     accent: "blue",
     description:
-      "A full-stack LMS built on the MERN stack with secure authentication, role-based access control, course management, and progress tracking.",
-    stack: ["React", "Node.js", "Express.js", "MongoDB"],
+      "A MERN-based Learning Management System featuring authentication, role-based access control, course management, and progress tracking with a responsive user interface.",
+    stack: [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT"
+    ],
     github: "https://github.com/Chandanbh07/LMS",
+    
+  },
+
+  {
+    title: "Sentiment Analysis of Indian Political Tweets",
+    category: "Machine Learning",
+    accent: "green",
+    description:
+      "Research project comparing LSTM and RNN models with TF-IDF and Word2Vec embeddings for political tweet sentiment classification, achieving up to 83% accuracy.",
+    stack: [
+      "Python",
+      "TensorFlow",
+      "LSTM",
+      "RNN",
+      "NLP"
+    ],
+    github: "https://github.com/Chandanbh07/Sentiment-Analysis-of-Indian-IPT-main",
+    
+  },
+
+  {
+    title: "Cine Stream",
+    category: "Mobile App",
+    accent: "violet",
+    description:
+      "A cross-platform React Native movie streaming application featuring responsive UI, reusable components, and smooth navigation for Android and iOS.",
+    stack: [
+      "React Native",
+      "Expo",
+      "JavaScript"
+    ],
+    github: "https://github.com/Chandanbh07/Cinestream",
+    
   },
 ];
 
