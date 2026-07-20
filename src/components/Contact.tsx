@@ -42,33 +42,37 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-16 max-w-2xl">
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
+      <motion.div
+        initial={{ opacity: 0, y: 25 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-white/60 text-sm uppercase tracking-[0.2em] font-medium mb-3"
+        transition={{ duration: 0.7 }}
       >
-        {eyebrow}
-      </motion.p>
-      <motion.h2
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.05 }}
-        className="font-display italic text-4xl md:text-5xl text-white leading-tight mb-4"
-      >
-        {title}
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-white/60 text-lg"
-      >
-        {subtitle}
-      </motion.p>
+        <div className="flex items-center gap-3 mb-4">
+          <span className="w-8 h-px bg-white/20" />
+
+          <span className="text-xs uppercase tracking-[0.3em] text-white/55">
+            {eyebrow}
+          </span>
+        </div>
+
+        <h2 className="text-4xl md:text-5xl font-body font-medium tracking-tight text-white mb-4">
+          {title.split(" ").map((word, i, arr) =>
+            i === arr.length - 1 ? (
+              <span key={i} className="font-display italic">
+                {" "}
+                {word}
+              </span>
+            ) : (
+              word + " "
+            )
+          )}
+        </h2>
+
+        <p className="text-base md:text-lg text-white/60 leading-relaxed max-w-xl">
+          {subtitle}
+        </p>
+      </motion.div>
     </div>
   );
 }
@@ -82,63 +86,102 @@ interface FormState {
 type Status = "idle" | "sending" | "sent" | "error";
 
 export default function Contact() {
-  const [form, setForm] = useState<FormState>({ name: "", email: "", message: "" });
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    email: "",
+    message: "",
+  });
+
   const [status, setStatus] = useState<Status>("idle");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setStatus("sending");
+
     try {
-      // Wire this up to a real form endpoint (Formspree, EmailJS, etc.)
+      // Connect Formspree / EmailJS here
       await new Promise((resolve) => setTimeout(resolve, 1200));
+
       setStatus("sent");
-      setForm({ name: "", email: "", message: "" });
+
+      setForm({
+        name: "",
+        email: "",
+        message: "",
+      });
     } catch {
       setStatus("error");
     }
   };
 
   return (
-    <section id="contact" className="relative w-full bg-black pt-24 md:pt-32 pb-16 md:pb-20 px-6 md:px-16 scroll-mt-24">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="contact"
+      className="relative bg-bg py-20 md:py-28 scroll-mt-24"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         <SectionHeading
           eyebrow="Contact"
           title="Let's build something together"
           subtitle="Have a project in mind or just want to connect? I'd love to hear from you."
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-12">
-          {/* Contact info */}
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-14">
+
+          {/* Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="flex flex-col gap-6"
+            transition={{ duration: 0.7 }}
+            className="space-y-8"
           >
             {contactInfo.map(({ icon: Icon, label, value, href }) => (
-              <div key={label} className="flex items-center gap-4">
-                <div className="w-11 h-11 rounded-full bg-white/10 border border-white/15 flex items-center justify-center shrink-0">
-                  <Icon size={18} className="text-white" />
+              <motion.div
+                key={label}
+                whileHover={{
+                  x: 8,
+                  transition: { duration: 0.2 },
+                }}
+                className="flex items-center gap-5"
+              >
+                <div className="w-12 h-12 rounded-full border border-stroke bg-surface flex items-center justify-center shrink-0">
+                  <Icon size={18} className="text-text-primary" />
                 </div>
+
                 <div>
-                  <p className="text-white/50 text-xs uppercase tracking-wide">{label}</p>
+                  <p className="text-xs uppercase tracking-[0.25em] text-muted">
+                    {label}
+                  </p>
+
                   {href ? (
-                    <a href={href} className="text-white text-sm font-medium hover:text-white/70 transition-colors">
+                    <a
+                      href={href}
+                      className="text-text-primary hover:text-white transition-colors"
+                    >
                       {value}
                     </a>
                   ) : (
-                    <p className="text-white text-sm font-medium">{value}</p>
+                    <p className="text-text-primary">
+                      {value}
+                    </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
 
-            <div className="flex items-center gap-3 mt-4">
+            <div className="flex items-center gap-4 pt-3">
               {socials.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -146,24 +189,30 @@ export default function Contact() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-colors"
+                  className="w-11 h-11 rounded-full border border-stroke bg-surface flex items-center justify-center text-muted transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:text-text-primary hover:shadow-xl"
                 >
-                  <Icon width={16} height={16} />
+                  <Icon width={18} height={18} />
                 </a>
               ))}
             </div>
           </motion.div>
-
-          {/* Form */}
+                    {/* Contact Form */}
           <motion.form
             onSubmit={handleSubmit}
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{
+              y: -6,
+              transition: {
+                duration: 0.25,
+                ease: "easeOut",
+              },
+            }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-4 bg-white/5 border border-white/10 rounded-2xl p-7"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="flex flex-col gap-5 rounded-3xl border border-stroke bg-surface/80 backdrop-blur-sm p-8 transition-all duration-300 hover:border-white/20 hover:shadow-2xl"
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-5">
               <input
                 type="text"
                 name="name"
@@ -171,8 +220,9 @@ export default function Contact() {
                 value={form.name}
                 onChange={handleChange}
                 required
-                className="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-white/40 transition-colors"
+                className="rounded-xl border border-stroke bg-bg px-4 py-3 text-text-primary placeholder:text-muted outline-none transition-all duration-300 hover:border-white/20 focus:border-white/40"
               />
+
               <input
                 type="email"
                 name="email"
@@ -180,34 +230,48 @@ export default function Contact() {
                 value={form.email}
                 onChange={handleChange}
                 required
-                className="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-white/40 transition-colors"
+                className="rounded-xl border border-stroke bg-bg px-4 py-3 text-text-primary placeholder:text-muted outline-none transition-all duration-300 hover:border-white/20 focus:border-white/40"
               />
             </div>
 
             <textarea
               name="message"
-              placeholder="Your message"
-              rows={5}
+              placeholder="Tell me about your project..."
+              rows={6}
               value={form.message}
               onChange={handleChange}
               required
-              className="bg-white/5 border border-white/15 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/40 focus:outline-none focus:border-white/40 transition-colors resize-none"
+              className="rounded-xl border border-stroke bg-bg px-4 py-3 text-text-primary placeholder:text-muted outline-none resize-none transition-all duration-300 hover:border-white/20 focus:border-white/40"
             />
 
-            <button
+            <motion.button
+              whileHover={{
+                scale: 1.03,
+                y: -2,
+              }}
+              whileTap={{
+                scale: 0.97,
+              }}
               type="submit"
               disabled={status === "sending"}
-              className="flex items-center justify-center gap-2 bg-white text-black font-medium rounded-xl px-6 py-3 text-sm hover:bg-white/85 transition-colors disabled:opacity-50 mt-1"
+              className="mt-2 flex items-center justify-center gap-2 rounded-xl accent-gradient px-6 py-3 font-medium text-bg transition-all duration-300 disabled:opacity-50"
             >
-              {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent!" : (
+              {status === "sending" ? (
+                "Sending..."
+              ) : status === "sent" ? (
+                "Message Sent!"
+              ) : (
                 <>
-                  Send Message <Send size={16} />
+                  Send Message
+                  <Send size={17} />
                 </>
               )}
-            </button>
+            </motion.button>
 
             {status === "error" && (
-              <p className="text-red-400 text-sm">Something went wrong. Please try again.</p>
+              <p className="text-sm text-red-400">
+                Something went wrong. Please try again.
+              </p>
             )}
           </motion.form>
         </div>
