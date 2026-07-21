@@ -9,23 +9,42 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "framer-motion": "^11.3.19",
+    "gsap": "^3.12.5",
+    "hls.js": "^1.5.15",
+    "lucide-react": "^0.383.0",
+    "nodemailer": "^9.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "^6.26.0",
-    "gsap": "^3.12.5",
-    "framer-motion": "^11.3.19",
-    "hls.js": "^1.5.15",
-    "lucide-react": "^0.383.0"
+    "react-router-dom": "^6.26.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
+    "nodemon": "^3.1.14",
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.7",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5.5.4",
     "vite": "^5.3.5"
-  }
+  },
+  "description": "Dark, cinematic single-page portfolio with a full form-based contact section plus the original cinematic sign-off footer, and a second page: a fully interactive terminal that answers commands about the résumé.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chandanbh07/Personal-Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chandanbh07/Personal-Portfolio/issues"
+  },
+  "homepage": "https://github.com/Chandanbh07/Personal-Portfolio#readme"
 }

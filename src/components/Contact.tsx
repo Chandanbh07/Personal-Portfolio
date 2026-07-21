@@ -3,6 +3,7 @@ import type { FormEvent, ChangeEvent, SVGProps } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { profile } from "../data";
+import emailjs from "@emailjs/browser";
 
 function GithubIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -103,26 +104,39 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    setStatus("sending");
+  setStatus("sending");
 
-    try {
-      // Connect Formspree / EmailJS here
-      await new Promise((resolve) => setTimeout(resolve, 1200));
+  try {
+    await emailjs.send(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      {
+        name: form.name,          // ✅ changed
+        reply_to: form.email,
+        message: form.message,
+      },
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    );
 
-      setStatus("sent");
+    setStatus("sent");
 
-      setForm({
-        name: "",
-        email: "",
-        message: "",
-      });
-    } catch {
-      setStatus("error");
-    }
-  };
+    setForm({
+      name: "",
+      email: "",
+      message: "",
+    });
+
+    setTimeout(() => {
+      setStatus("idle");
+    }, 3000);
+  } catch (error) {
+    console.error(error);
+    setStatus("error");
+  }
+};
 
   return (
     <section
