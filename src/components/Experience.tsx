@@ -61,12 +61,15 @@ export default function Experience() {
                         {experience.title}
                       </h3>
 
-                      <p className="mt-2 text-sm text-muted">
-                        <span className="text-text-primary">
-                          {experience.org}
-                        </span>{" "}
-                        • {experience.location}
-                      </p>
+                      <span
+  className={`font-semibold ${
+    experience.location.includes("Sweden")
+      ? "text-[#89AACC]"
+      : "text-text-primary"
+  }`}
+>
+  {experience.location}
+</span>
                     </div>
 
                     <span className="self-start whitespace-nowrap rounded-full border border-stroke bg-stroke/40 px-3 py-1.5 text-xs text-text-primary">

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 // import { Link } from "react-router-dom";
 import gsap from "gsap";
 import Hls from "hls.js";
+import { Terminal } from "lucide-react";
 import { profile } from "../data";
 
 const HLS_SRC =
@@ -140,27 +141,47 @@ export default function Hero({
           {profile.tagline}
         </p>
 
-        <div className="blur-in inline-flex flex-wrap justify-center gap-4">
-          <a
-            href="#work"
-            className="group relative rounded-full text-sm px-7 py-3.5 transition-transform duration-300 hover:scale-105"
-          >
-            <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
-            <span className="relative flex items-center rounded-full px-7 py-3.5 bg-text-primary text-bg group-hover:bg-bg group-hover:text-text-primary transition-colors duration-300">
-              See Work
-            </span>
-          </a>
-          <a
-            href="/resume.pdf"
-            download
-            className="group relative rounded-full text-sm px-7 py-3.5 transition-transform duration-300 hover:scale-105"
-          >
-            <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
-            <span className="relative flex items-center rounded-full px-7 py-3.5 border-2 border-stroke group-hover:border-transparent bg-bg text-text-primary transition-colors duration-300">
-              Download Resume
-            </span>
-          </a>
-        </div>
+        <div className="blur-in flex flex-col items-center gap-7">
+  {/* Primary CTA */}
+  <button
+    type="button"
+    onClick={onOpenTerminal}
+    className="group relative rounded-full text-sm px-7 py-3.5 transition-transform duration-300 hover:scale-105"
+  >
+    <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
+
+    <span className="relative flex items-center gap-2 rounded-full px-7 py-3.5 bg-text-primary text-bg transition-colors duration-300 group-hover:bg-bg group-hover:text-text-primary">
+      <Terminal className="h-4 w-4" strokeWidth={1.75} />
+      Interactive Terminal
+    </span>
+  </button>
+
+  {/* Secondary Actions */}
+  <div className="flex items-center gap-8 text-sm">
+    <a
+      href="#work"
+      className="group relative rounded-full transition-transform duration-300 hover:scale-105"
+    >
+      <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
+
+      <span className="relative flex items-center rounded-full px-6 py-2.5 bg-text-primary text-bg transition-colors duration-300 group-hover:bg-bg group-hover:text-text-primary">
+        See Work
+      </span>
+    </a>
+
+    <a
+      href="/resume.pdf"
+      download
+      className="group relative rounded-full transition-transform duration-300 hover:scale-105"
+    >
+      <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
+
+      <span className="relative flex items-center rounded-full px-6 py-2.5 border-2 border-stroke bg-bg text-text-primary transition-colors duration-300 group-hover:border-transparent">
+        Download Resume
+      </span>
+    </a>
+  </div>
+</div>
       </div>
 
       {/* Scroll indicator */}

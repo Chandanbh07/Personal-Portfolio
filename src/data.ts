@@ -95,7 +95,7 @@ export const experiences = [
     title: "AI Research Intern",
     org: "University of Borås",
     location: "Borås, Sweden (Remote)",
-    period: "Feb 2026 — May 2026",
+    period: "Jan 2026 — May 2026",
     description:
       "Conducted research on ontology-guided deep learning for hierarchical fashion attribute recognition. Designed and implemented the OG-HMC framework by combining graph neural networks, attention mechanisms, and computer vision to improve semantic consistency in multi-label classification.",
     points: [
@@ -127,7 +127,7 @@ export const experiences = [
     title: "Full Stack Developer",
     org: "Academic & Personal Projects",
     location: "India",
-    period: "2022 — Present",
+    period: "2022 — 2026",
     description:
       "Designed and developed production-style web applications ranging from MERN platforms to blockchain-powered prediction markets, applying modern software engineering practices across frontend, backend, databases, authentication, and deployment.",
     points: [
@@ -215,7 +215,7 @@ export const projects: Project[] = [
     ],
     github: "https://github.com/Chandanbh07/PolyCast",
     liveDemo: "https://poly-cast-frontend.vercel.app/",
-    image: "/polycast.png",
+    // image: "/polycast.png",
   },
 
   {
