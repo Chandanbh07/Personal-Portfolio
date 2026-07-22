@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import gsap from "gsap";
 import Hls from "hls.js";
 import { profile } from "../data";
@@ -13,7 +13,13 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Hero() {
+interface HeroProps {
+  onOpenTerminal: () => void;
+}
+
+export default function Hero({
+  onOpenTerminal,
+}: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [scrolled, setScrolled] = useState(false);
 
@@ -104,15 +110,16 @@ export default function Hero() {
 
           <div className="w-px h-5 bg-stroke mx-1" />
 
-          <Link
-            to="/terminal"
-            className="group relative text-xs sm:text-sm rounded-full"
-          >
-            <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
-            <span className="relative flex items-center gap-1 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 bg-surface backdrop-blur-md text-muted group-hover:text-text-primary transition-colors duration-200">
-              Terminal <span aria-hidden>_</span>
-            </span>
-          </Link>
+          <button
+  onClick={onOpenTerminal}
+  className="group relative text-xs sm:text-sm rounded-full"
+>
+  <span className="absolute -inset-[2px] rounded-full opacity-0 group-hover:opacity-100 accent-gradient transition-opacity duration-300" />
+
+  <span className="relative flex items-center gap-1 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 bg-surface backdrop-blur-md text-muted group-hover:text-text-primary transition-colors duration-200">
+    Terminal <span aria-hidden>_</span>
+  </span>
+</button>
         </div>
       </nav>
 

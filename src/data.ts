@@ -23,7 +23,7 @@ export const about = {
     { value: "10+", label: "Projects Built" },
     { value: "500+", label: "GitHub Commits" },
     { value: "20+", label: "Technologies Used" },
-    { value: "1", label: "Research Publication" },
+    { value: "4", label: "Research Publication" },
   ],
 };
 
@@ -90,30 +90,98 @@ export const skillGroups = [
   },
 ];
 
-export const experience = {
-  title: "Full Stack Developer",
-  org: "Academic & Personal Projects",
-  location: "India",
-  period: "2022 — Present",
-  description:
-    "Designed and developed production-style web applications ranging from MERN platforms to blockchain-powered prediction markets, while applying software engineering best practices throughout the development lifecycle.",
-  points: [
-    "Built responsive full-stack applications using React, TypeScript, Node.js, Express.js, PostgreSQL, MongoDB, and Prisma.",
-    "Developed a decentralized prediction market platform with authentication, real-time market updates, and blockchain integration.",
-    "Designed REST APIs, database schemas, authentication systems, and reusable UI components.",
-    "Used Git, GitHub, Docker, and Vercel for version control, deployment, and collaboration.",
-  ],
-  stack: [
-    "React",
-    "TypeScript",
-    "Node.js",
-    "Express",
-    "PostgreSQL",
-    "Prisma",
-    "MongoDB",
-    "Docker",
-  ],
-};
+export const experiences = [
+  {
+    title: "AI Research Intern",
+    org: "University of Borås",
+    location: "Borås, Sweden (Remote)",
+    period: "Feb 2026 — May 2026",
+    description:
+      "Conducted research on ontology-guided deep learning for hierarchical fashion attribute recognition. Designed and implemented the OG-HMC framework by combining graph neural networks, attention mechanisms, and computer vision to improve semantic consistency in multi-label classification.",
+    points: [
+      "Developed the OG-HMC (Ontology-Guided Hierarchical Multi-Label Classification) framework for hierarchical fashion attribute recognition.",
+      "Implemented Graph Attention Networks (GAT) and Label-Guided Spatial Attention (LGSA) to model semantic label relationships and improve attribute localization.",
+      "Integrated ResNet-50 with hierarchical prediction heads and a Composite Hierarchical Loss to enforce parent-child consistency.",
+      "Evaluated the framework on Fashionpedia and Fashion Product Images datasets, achieving Micro-F1 scores of 0.6634 and 0.8816 while eliminating attribute-level hierarchy violations.",
+      "Performed benchmarking, ablation studies, and comparative analysis against CNN, graph-based, and transformer-based architectures."
+    ],
+    stack: [
+      "Python",
+      "PyTorch",
+      "PyTorch Geometric",
+      "Computer Vision",
+      "Deep Learning",
+      "Machine Learning",
+      "Graph Neural Networks",
+      "Graph Attention Networks",
+      "ResNet-50",
+      "NumPy",
+      "Pandas",
+      "Scikit-learn",
+      "Git",
+      "GitHub"
+    ],
+  },
+
+  {
+    title: "Full Stack Developer",
+    org: "Academic & Personal Projects",
+    location: "India",
+    period: "2022 — Present",
+    description:
+      "Designed and developed production-style web applications ranging from MERN platforms to blockchain-powered prediction markets, applying modern software engineering practices across frontend, backend, databases, authentication, and deployment.",
+    points: [
+      "Built responsive full-stack applications using React, Next.js, TypeScript, Node.js, Express.js, PostgreSQL, MongoDB, Prisma, and Supabase.",
+      "Developed PolyCast, a decentralized prediction market platform featuring authentication, real-time WebSocket updates, blockchain integration, and order management.",
+      "Designed scalable REST APIs, database schemas, authentication systems, and reusable UI components following clean architecture principles.",
+      "Integrated PostgreSQL, MongoDB, Prisma ORM, Supabase, Docker, and Vercel for efficient development, deployment, and cloud hosting.",
+      "Collaborated using Git and GitHub while following modern development workflows, debugging, testing, and performance optimization practices."
+    ],
+    stack: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "MongoDB",
+      "Prisma",
+      "Supabase",
+      "WebSockets",
+      "Docker",
+      "Git",
+      "GitHub",
+      "Vercel"
+    ],
+  },
+];
+
+// export const experience = {
+//   title: "Full Stack Developer",
+//   org: "Academic & Personal Projects",
+//   location: "India",
+//   period: "2022 — Present",
+//   description:
+//     "Designed and developed production-style web applications ranging from MERN platforms to blockchain-powered prediction markets, while applying software engineering best practices throughout the development lifecycle.",
+//   points: [
+//     "Built responsive full-stack applications using React, TypeScript, Node.js, Express.js, PostgreSQL, MongoDB, and Prisma.",
+//     "Developed a decentralized prediction market platform with authentication, real-time market updates, and blockchain integration.",
+//     "Designed REST APIs, database schemas, authentication systems, and reusable UI components.",
+//     "Used Git, GitHub, Docker, and Vercel for version control, deployment, and collaboration.",
+//   ],
+//   stack: [
+//     "React",
+//     "TypeScript",
+//     "Node.js",
+//     "Express",
+//     "PostgreSQL",
+//     "Prisma",
+//     "MongoDB",
+//     "Docker",
+//   ],
+// };
+
+
 
 export interface Project {
   title: string;
