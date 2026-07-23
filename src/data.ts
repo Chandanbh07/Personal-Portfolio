@@ -127,7 +127,7 @@ export const experiences = [
     title: "Full Stack Developer",
     org: "Academic & Personal Projects",
     location: "India",
-    period: "2022 — 2026",
+    period: "2022 - 2026",
     description:
       "Designed and developed production-style web applications ranging from MERN platforms to blockchain-powered prediction markets, applying modern software engineering practices across frontend, backend, databases, authentication, and deployment.",
     points: [
