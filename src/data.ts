@@ -21,7 +21,7 @@ export const about = {
   ],
   stats: [
     { value: "10+", label: "Projects Built" },
-    { value: "500+", label: "GitHub Commits" },
+    { value: "200+", label: "GitHub Commits" },
     { value: "20+", label: "Technologies Used" },
     { value: "4", label: "Research Publication" },
   ],
